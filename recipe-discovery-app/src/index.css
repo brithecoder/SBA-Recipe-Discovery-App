@@ -1,0 +1,74 @@
+/* Ensure the Nav fills the width and uses theme colors */
+.recipe-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 2rem;
+  background-color: var(--nav-bg);
+  color: var(--text-primary);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  box-sizing: border-box; /* Crucial for padding */
+}
+
+/* Make the list of links look like a menu */
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text-primary);
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.nav-links a:hover, .nav-links a.active {
+  color: var(--accent);
+}
+
+/* Modern Search Bar Styling */
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.1);
+  padding: 5px 15px;
+  border-radius: 20px;
+}
+
+.nav-search input {
+  border: none;
+  background: transparent;
+  color: var(--text-primary);
+  outline: none;
+  padding: 5px;
+}
+
+/* Theme Toggle Button Fixes */
+.theme-toggle {
+  background: var(--card-bg);
+  border: 1px solid rgba(0,0,0,0.2);
+  color: var(--text-primary);
+  cursor: pointer;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background: var(--accent);
+  color: white;
+  border-color: var(--accent);
+}

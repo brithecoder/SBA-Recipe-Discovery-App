@@ -1,0 +1,473 @@
+/* 1. RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root, body.light {
+  --bg: #ebebd3;          /* Beige */
+  --text: #083d77;        /* Regal Navy */
+  --nav-bg: #ffffff;      /* Clean white for nav in light mode */
+  --card: #ffffff;
+  --accent: #f95738;      /* Tomato */
+  --secondary: #ee964b;   /* Sandy Brown */
+  --border: #d8d8bc;      /* Darker Beige for borders */
+}
+
+body.dark {
+  --bg: #083d77;          /* Regal Navy */
+  --text: #ebebd3;        /* Beige */
+  --nav-bg: #052a52;      /* Darker Navy */
+  --card: #0a4a8f;        /* Lighter Navy for cards */
+  --accent: #f4d35e;      /* Royal Gold */
+  --secondary: #ee964b;   /* Sandy Brown */
+  --border: #0b56a3;
+}
+
+body {
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-color: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+  min-height: 100vh;
+}
+
+
+.recipe-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 5%;
+  height: 80px;
+  background-color: var(--nav-bg);
+  border-bottom: 3px solid var(--secondary); /* Sandy Brown accent line */
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-logo a {
+  font-size: 1.8rem;
+  font-weight: 900;
+  text-decoration: none;
+  color: var(--accent); /* Tomato Red */
+  letter-spacing: -1px;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: var(--text);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.nav-links a.active {
+  color: var(--secondary); /* Sandy Brown */
+}
+
+.nav-right-section {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+}
+
+/* SEARCH BAR */
+.nav-search {
+  display: flex;
+  align-items: center;
+  background: var(--bg);
+  border: 2px solid var(--border);
+  padding: 8px 15px;
+  border-radius: 50px;
+}
+
+.nav-search input {
+  border: none;
+  background: transparent;
+  color: var(--text);
+  outline: none;
+  font-weight: 500;
+}
+
+/* THEME TOGGLE */
+.theme-toggle {
+  background-color: var(--accent); /* Tomato in light, Gold in dark */
+  color: white;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 4px 0px rgba(0,0,0,0.1);
+  transition: transform 0.1s;
+}
+
+.theme-toggle:active {
+  transform: translateY(2px);
+  box-shadow: none;
+}
+
+/* Override toggle for dark mode to use Royal Gold */
+body.dark .theme-toggle {
+  background-color: var(--accent); /* Now Royal Gold #f4d35e */
+  color: #083d77; /* Navy text for contrast on gold */
+}
+
+
+
+
+/*Home Page Category grid'
+
+/* Container for the cards */
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 2.5rem;
+  padding: 3rem 5%;
+}
+
+.category-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+  text-decoration: none;
+  overflow: hidden;
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  flex-direction: column;
+}
+
+/* The Hover Effect using Sandy Brown */
+.category-card:hover {
+  transform: translateY(-10px);
+  border-color: var(--secondary); /* Sandy Brown */
+  box-shadow: 0 15px 30px rgba(8, 61, 119, 0.15); /* Soft Navy shadow */
+}
+
+.category-image {
+  background: #fdfdfd; /* Contrast for the transparent PNGs from API */
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.category-image img {
+  width: 100%;
+  max-width: 200px;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.category-card:hover .category-image img {
+  transform: scale(1.1);
+}
+
+.category-info {
+  padding: 1.5rem;
+  border-top: 1px solid var(--border);
+  flex-grow: 1;
+}
+
+.category-info h3 {
+  color: var(--accent); /* Tomato Red */
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+  font-weight: 800;
+}
+
+.category-info p {
+  color: var(--text);
+  font-size: 0.9rem;
+  opacity: 0.8;
+  margin-bottom: 1rem;
+  line-height: 1.4;
+}
+
+.explore-link {
+  color: var(--secondary); /* Sandy Brown */
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+}
+
+
+/* Loading Spinner Css*/
+
+.spinner-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 50vh; /* Centers it in the middle of the view */
+  gap: 1.5rem;
+}
+
+.spinner-container p {
+  color: var(--text);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 5px solid var(--border); /* Beige/Navy border depending on theme */
+  border-top: 5px solid var(--accent); /* Tomato/Gold accent */
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.category-grid {
+  /* ... your existing grid code ... */
+  animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+
+.page-header {
+  text-align: center;
+  padding: 3rem 1rem;
+  background-color: var(--nav-bg);
+  border-bottom: 2px solid var(--border);
+  margin-bottom: 2rem;
+}
+
+.category-title {
+  color: var(--accent); /* Tomato */
+  font-size: 2.5rem;
+  text-transform: capitalize;
+  margin-bottom: 0.5rem;
+}
+
+.page-header p {
+  color: var(--text);
+  opacity: 0.7;
+  font-weight: 500;
+}
+
+
+/*Meal Card Css*/
+
+.meal-card {
+  background: var(--card);
+  border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+
+.meal-card:hover {
+  transform: scale(1.02);
+  border-color: var(--secondary); /* Sandy Brown */
+  box-shadow: 0 10px 20px rgba(8, 61, 119, 0.1);
+}
+
+.meal-image {
+  width: 100%;
+  height: 220px;
+  overflow: hidden;
+}
+
+.meal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensures the food image fills the space without stretching */
+  transition: transform 0.5s ease;
+}
+
+.meal-card:hover .meal-image img {
+  transform: scale(1.1); /* Zoom effect on the food */
+}
+
+.meal-info {
+  padding: 1.2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.meal-info h3 {
+  font-size: 1.1rem;
+  color: var(--text);
+  min-height: 2.8rem; /* Keeps buttons aligned even if titles are different lengths */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.recipe-link {
+  display: block;
+  background-color: var(--accent); /* Tomato */
+  color: white;
+  text-decoration: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.9rem;
+  transition: background 0.2s;
+}
+
+.recipe-link:hover {
+  background-color: var(--secondary); /* Sandy Brown */
+}
+
+
+
+
+
+
+
+
+/* 404 NOT FOUND STYLES */
+.not-found-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh; /* Keeps it centered vertically */
+  text-align: center;
+  padding: 2rem;
+}
+
+.not-found-content {
+  max-width: 500px;
+}
+
+.error-icon {
+  font-size: 5rem;
+  display: block;
+  margin-bottom: 1rem;
+  animation: wobble 2s infinite ease-in-out;
+}
+
+.not-found-content h1 {
+  font-size: 6rem;
+  font-weight: 900;
+  color: var(--accent); /* Tomato Red */
+  line-height: 1;
+  margin: 0;
+}
+
+.not-found-content h2 {
+  font-size: 1.8rem;
+  color: var(--text); /* Regal Navy */
+  margin-bottom: 1rem;
+}
+
+.not-found-content p {
+  color: var(--text);
+  opacity: 0.8;
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.home-btn {
+  display: inline-block;
+  background-color: var(--text); /* Navy */
+  color: var(--bg); /* Beige */
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  border: 2px solid var(--text);
+}
+
+.home-btn:hover {
+  background-color: transparent;
+  color: var(--text);
+  transform: translateY(-3px);
+}
+
+/* Fun animation for the frying pan */
+@keyframes wobble {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-15deg); }
+  75% { transform: rotate(15deg); }
+}
+
+
+
+
+/* RESPONSIVE DESIGN */
+
+/* 1. Tablet & Small Laptops (under 1024px) */
+@media (max-width: 1024px) {
+  .category-grid {
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .recipe-nav {
+    padding: 0 3%;
+  }
+}
+
+/* 2. Mobile Phones (under 768px) */
+@media (max-width: 768px) {
+  .recipe-nav {
+    flex-direction: column; /* Stack logo, links, and search */
+    height: auto;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+    font-size: 0.75rem;
+  }
+
+  .nav-right-section {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .nav-search {
+    flex-grow: 1; /* Make search fill available space */
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr; /* Single column on mobile */
+    padding: 2rem 10%;
+  }
+
+  .home-hero h1 {
+    font-size: 1.8rem;
+  }
+}
+
+/* 3. Very Small Screens (under 480px) */
+@media (max-width: 480px) {
+  .nav-links {
+    display: none; /* Often best to hide text links for a hamburger menu (optional) */
+  }
+  
+  .category-card {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
