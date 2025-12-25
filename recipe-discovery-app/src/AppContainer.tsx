@@ -6,6 +6,7 @@ import CategoryPage from './Components/CategoryPage'
 import FavoritesPage from './Components/FavoritesPage';
 import NotFound from './Components/NotFound';
 import RecipeDetailsPage from './Components/RecipeDetailsPage';
+import SearchResultsPage from './Components/SearchResultsPage';
 
 
 export default function AppContainer() {
@@ -15,7 +16,8 @@ export default function AppContainer() {
     <Routes>
      <Route path ="/" element={<HomePage /> } />
      <Route path ="/category/:categoryName" element={<CategoryPage /> } />
-     <Route path ="/favorites" element={<FavoritesPage />} />    
+     <Route path ="/favorites" element={<FavoritesPage />} />   
+     <Route path="/search" element={<SearchResultsPage />} /> 
      <Route path ="/recipes/:slug" element={<RecipeDetailsPage />} />
      <Route path ="*" element={<NotFound />} />     
     </Routes>

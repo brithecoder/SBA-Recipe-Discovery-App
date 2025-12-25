@@ -1,12 +1,7 @@
 import { createContext, useContext } from 'react';
+import type { FavoritesContextType  } from '../Types'
 
-// Define the shape of our context
-export interface FavoritesContextType {
-  favorites: string[]; // Array of Meal IDs (idMeal)
-  addToFavorites: (id: string) => void;
-  removeFromFavorites: (id: string) => void;
-  isFavorite: (id: string) => boolean;
-}
+
 
 // 1. Create the Context object
 export const FavoritesContext = createContext<FavoritesContextType | undefined>(undefined);

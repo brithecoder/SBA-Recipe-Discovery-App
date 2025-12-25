@@ -98,6 +98,45 @@ body {
   font-weight: 500;
 }
 
+.nav-search {
+  display: flex;
+  align-items: center;
+  background-color: white; /* Or your beige background */
+  border: 2px solid var(--border);
+  border-radius: 50px; /* Rounded pill shape */
+  padding: 2px 2px 2px 15px; /* Space for text on left, tight on right */
+  transition: border-color 0.3s ease;
+}
+
+.nav-search:focus-within {
+  border-color: var(--accent); /* Turns Tomato red when typing */
+}
+
+.nav-search input {
+  border: none;
+  outline: none;
+  background: transparent;
+  padding: 8px 0;
+  width: 100%;
+  font-size: 0.9rem;
+  color: var(--text);
+}
+
+.search-submit-btn {
+  background-color: var(--accent); /* Tomato Red */
+  border: none;
+  border-radius: 50%; /* Circular button */
+  width: 35px;
+  height: 35px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease, background-color 0.2s ease;
+  font-size: 1rem;
+}
+
+
 /* THEME TOGGLE */
 .theme-toggle {
   background-color: var(--accent); /* Tomato in light, Gold in dark */
@@ -128,22 +167,40 @@ body.dark .theme-toggle {
 /*Home Page Category grid'
 
 /* Container for the cards */
+/* The container for the masonry effect */
 .category-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 2.5rem;
-  padding: 3rem 5%;
+  column-count: 3; /* Desktop: 3 columns */
+  column-gap: 1.5rem;
+  padding: 2rem 0;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
+/* Individual Cards must be inline-block to stack correctly */
 .category-card {
+  display: inline-block;
+  width: 100%;
+  margin-bottom: 1.5rem; /* Gap between vertical items */
+  break-inside: avoid; /* Prevents card splitting across columns */
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  text-decoration: none;
+  border-radius: 15px;
   overflow: hidden;
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-  display: flex;
-  flex-direction: column;
+  transition: transform 0.3s ease;
+  padding:10px;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+  .category-grid {
+    column-count: 2; /* Tablets: 2 columns */
+  }
+}
+
+@media (max-width: 600px) {
+  .category-grid {
+    column-count: 1; /* Mobile: 1 column */
+  }
 }
 
 /* The Hover Effect using Sandy Brown */
@@ -288,6 +345,7 @@ body.dark .theme-toggle {
   width: 100%;
   height: 220px;
   overflow: hidden;
+  position: relative;
 }
 
 .meal-image img {
@@ -301,6 +359,22 @@ body.dark .theme-toggle {
   transform: scale(1.1); /* Zoom effect on the food */
 }
 
+.fav-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 5px;
+  font-size: 1.2rem;
+  transition: transform 0.2s;
+}
+
+.fav-btn:hover {
+  transform: scale(1.1);
+}
 .meal-info {
   padding: 1.2rem;
   text-align: center;
@@ -335,9 +409,170 @@ body.dark .theme-toggle {
 }
 
 
+/* Detail page styles */
 
+.recipe-detail-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
 
+.back-btn {
+  display: flex;
+  align-items: center;
+ background-color: var(--card);
+  color: var(--text); /* Regal Navy */
+  border: 1px solid var(--border);
+  padding: 8px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  transition: all 0.2s ease;
+  gap: 8px;
+}
 
+.back-btn:hover {
+ background-color: var(--text);
+  color: white;
+  transform: translateX(-5px); /* Subtle nudge to the left */
+}
+
+.recipe-hero {
+  position: relative;
+  height: 450px;
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 3rem;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 3rem;
+  background: linear-gradient(transparent, rgba(8, 61, 119, 0.9)); /* Regal Navy Gradient */
+  color: white;
+}
+
+.hero-overlay h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.recipe-badges span {
+  background: var(--accent); /* Tomato */
+  padding: 5px 15px;
+  border-radius: 50px;
+  margin-right: 10px;
+  font-weight: 700;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+}
+
+.recipe-content {
+  display: grid;
+  grid-template-columns: 350px 1fr;
+  gap: 4rem;
+}
+
+.ingredients-section {
+  background: var(--card);
+  padding: 2rem;
+  border-radius: 15px;
+  border: 1px solid var(--border);
+  height: fit-content;
+}
+
+.ingredients-section h2, .instructions-section h2 {
+  color: var(--text);
+  margin-bottom: 1.5rem;
+  border-left: 5px solid var(--accent);
+  padding-left: 15px;
+}
+
+.ingredients-section ul {
+  list-style: none;
+}
+
+.ingredients-section li {
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+  color: var(--text);
+  font-weight: 500;
+}
+
+.instructions-section p {
+  line-height: 1.8;
+  color: var(--text);
+  white-space: pre-line; /* Respects line breaks from API */
+  font-size: 1.1rem;
+}
+
+.video-btn {
+  display: inline-block;
+  margin-top: 2rem;
+  background: #ff0000; /* YouTube Red */
+  color: white;
+  padding: 12px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+/* Mobile Fix */
+@media (max-width: 768px) {
+  .recipe-content {
+    grid-template-columns: 1fr;
+  }
+  .hero-overlay h1 {
+    font-size: 2rem;
+  }
+}
+
+/*favorites page css */
+
+.empty-favorites {
+  text-align: center;
+  padding: 5rem 2rem;
+  color: var(--text);
+}
+
+.empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1.5rem;
+  opacity: 0.5;
+}
+
+.empty-favorites h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.empty-favorites p {
+  margin-bottom: 2rem;
+  opacity: 0.7;
+}
+
+/* Reusing the home button style from your NotFound page */
+.empty-favorites .home-btn {
+  display: inline-block;
+  background-color: var(--accent); /* Tomato */
+  color: white;
+  padding: 12px 30px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 700;
+}
 
 
 
@@ -446,10 +681,11 @@ body.dark .theme-toggle {
     justify-content: space-between;
   }
 
-  .nav-search {
-    flex-grow: 1; /* Make search fill available space */
-  }
 
+.search-submit-btn:hover {
+  background-color: var(--text); /* Navy on hover */
+  transform: scale(1.05);
+}
   .category-grid {
     grid-template-columns: 1fr; /* Single column on mobile */
     padding: 2rem 10%;

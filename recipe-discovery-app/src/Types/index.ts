@@ -7,10 +7,15 @@ export interface CategoryCardProps {
 }
 
 
+export interface FavoriteMeal {
+  id: string;
+  name: string;
+  image: string;
+}
+
 export interface FavoritesContextType {
-  favorites: string[]; // Array of Meal IDs (idMeal)
-  addToFavorites: (id: string) => void;
-  removeFromFavorites: (id: string) => void;
+  favorites: FavoriteMeal[]; // Changed from string[] to FavoriteMeal[]
+  toggleFavorite: (meal: FavoriteMeal) => void; // Combined add/remove into toggle
   isFavorite: (id: string) => boolean;
 }
 
@@ -48,4 +53,19 @@ export interface MealCardProps {
   id: string;
   name: string;
   image: string;
+}
+
+export interface DetailedMeal {
+  idMeal: string;
+  strMeal: string;
+  strCategory: string;
+  strArea: string;
+  strInstructions: string;
+  strMealThumb: string;
+  strYoutube: string;
+  [key: string]: unknown; // Allows us to loop through strIngredient1, strIngredient2...
+}
+
+export interface MealDetailResponse {
+  meals: DetailedMeal[];
 }

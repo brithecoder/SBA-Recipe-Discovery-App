@@ -1,14 +1,29 @@
-import React from 'react'
-import { Link } from 'react-router-dom';
-import type { MealCardProps } from '../Types';
 
+import { Link } from 'react-router-dom';
+import type { MealCardProps, FavoriteMeal } from '../Types';
+import { useFavorites } from '../CustomHooks/FavoritesContext';
 
 export default function MealCard({ id, name, image }: MealCardProps) {
-  return (
-    <div className="meal-card">
+  const { toggleFavorite, isFavorite } = useFavorites();
+  const favorited = isFavorite(id);
+  
+  const handleToggle = (e: React.MouseEvent) => {
+  e.preventDefault(); 
+  e.stopPropagation(); 
+  const mealToSave: FavoriteMeal = { id, name, image };
+  toggleFavorite(mealToSave);
+};
+    return (
+   <div className="meal-card">
       <div className="meal-image">
         <img src={image} alt={name} loading="lazy" />
-        {/* We'll add a heart button here later for Favorites! */}
+        <button 
+          className={`fav-btn ${favorited ? 'active' : ''}`} 
+          onClick={handleToggle}
+          aria-label={favorited ? "Remove from favorites" : "Add to favorites"}
+        >
+          {favorited ? '❤️' : '🤍'}
+        </button>
       </div>
       <div className="meal-info">
         <h3>{name}</h3>
