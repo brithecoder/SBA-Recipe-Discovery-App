@@ -29,8 +29,14 @@ export default function RecipeDetailsPage() {
     return ingredients;
   };
 
-  if (loading) return <LoadingSpinner />;
-  if (error || !meal){return <NotFound />;}
+  if (loading || !meal) {
+  return <LoadingSpinner />;
+}
+
+  if (!loading && (error || data?.meals === null)) {
+  return <NotFound />;
+}
+
 
   return (
     <div className="recipe-detail-container">

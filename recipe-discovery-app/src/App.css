@@ -161,7 +161,10 @@ body.dark .theme-toggle {
   color: #083d77; /* Navy text for contrast on gold */
 }
 
-
+ .home-hero{
+  padding-left: 20px;
+  padding-top:10px
+ }
 
 
 /*Home Page Category grid'
