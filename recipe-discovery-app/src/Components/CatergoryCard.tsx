@@ -4,8 +4,7 @@ import type { CategoryCardProps } from '../Types';
 
 
 export default function CategoryCard({ strCategory, strCategoryThumb, strCategoryDescription}: CategoryCardProps) {
-
-
+ 
   return (
     <div className="category-card">
       <img src={strCategoryThumb} alt={strCategory} />

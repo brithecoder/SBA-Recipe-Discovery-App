@@ -1,21 +1,52 @@
-# React + TypeScript Recipe Discovery App
+# 🍳 Recipe Discovery App (React + TypeScript)
+A modern, responsive web application for exploring culinary inspirations. This project was built to practice state management, custom hooks, and handling asynchronous data flows in a type-safe environment.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.To run this application you want to CD into recipe-discovery-app
-and run npm run dev in the terminal this will provide a local host port which you can paste into a browser and see the application. I used react router and a few custom hooks. 
+## 🚀 Getting Started
+To get a local copy up and running, follow these steps:
 
+**Navigate to the project directory:**
+  ```bash
+     cd recipe-discovery-app
+   ```
+**Install dependencies:**
+```bash
+  npm install
+```
+**Start the development server:**
+```bash
+   npm run dev
+``` 
+**View the app:** Open the LocalHost URL provided in your terminal.
 
-I was having an issue with context hook becuase of race conditions. I worked this out by having the context and the providers seperately.This clear up all the errors I was getting from race conditions. 
+## ✨ Features
+**Browse Categories:** Explore recipe categories fetched directly from the API.
 
-### The challenge
+**Search & Filter:** Find specific dishes using the search input or filter by category.
 
-Users should be able to:
+**Detailed View:** Deep-dive into ingredients and instructions via React Router-powered pages.
 
-- See all recipe categories from the API on the homepage
-- Search for a recipe using an `input` field
-- Filter recipes by category 
-- Click on a recipe to see more detailed information on a separate page
-- Add and remove recipes from favorites
-- Toggle the color scheme between light and dark mode
+**Favorites System:** Save and manage your favorite recipes in a dedicated list.
 
+**Dark Mode:** Toggle between light and dark themes for a personalized UI experience.
 
- [!screenshot of app](appSS.png?raw=true)
+## 🛠️ Technical Highlights
+**Solving Race Conditions with Context**
+During development, I encountered race conditions when the Context and Provider were bundled too tightly. This often led to components attempting to consume state before it was initialized.
+
+**The Solution:** I decoupled the Context definition from the Provider component. By separating these into different files/modules, I ensured a predictable initialization order and cleaner imports, effectively eliminating the synchronization errors.
+
+**🧱 Responsive Masonry Layout**
+To display recipes of varying heights without awkward gaps, I implemented a Masonry Grid using CSS.This was my favorite part of the project as it gives a different feel.
+
+**The Approach:** Instead of a standard grid-template-rows, I utilized grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) combined with grid-row: span [value].
+
+## Key Tools Used
+**Vite:** For a blazing-fast development environment.
+
+**TypeScript:** To ensure type safety across API responses and component props.
+
+**React Router:** For seamless client-side navigation.
+
+**Custom Hooks:** To encapsulate logic for API calls and local storage management.
+
+![ScreenShot of application](./appSS.png)

@@ -7,7 +7,6 @@ import type { MealResponse } from '../Types'
 export default function CategoryPage() {
     const { categoryName } = useParams();
     const { data, loading, error } = useFetch<MealResponse>( `https://www.themealdb.com/api/json/v1/1/filter.php?c=${categoryName}`);
-
   if (loading) return <LoadingSpinner />;
   if (error) return <div className="error">Could not find recipes.</div>;
   return (
