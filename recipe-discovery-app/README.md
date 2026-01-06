@@ -1,5 +1,5 @@
 # 🍳 Recipe Discovery App (React + TypeScript)
-A modern, responsive web application for exploring culinary inspirations. This project was built to practice state management, custom hooks, and handling asynchronous data flows in a type-safe environment.
+A modern, responsive web application for exploring culinary inspirations. This project was built to practice state management, custom hooks, and handling asynchronous data flows in a type-safe environment.I loved picking out a color theme for this project and also defensive coding to help develop the user experience. Like adding cute messages for the 404 error or if there were know results from a search query. 
 
 ## 🚀 Getting Started
 To get a local copy up and running, follow these steps:
@@ -40,6 +40,16 @@ To display recipes of varying heights without awkward gaps, I implemented a Maso
 
 **The Approach:** Instead of a standard grid-template-rows, I utilized grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) combined with grid-row: span [value].
 
+## 🎨 UX & Design Philosophy
+**Defensive Coding & User Feedback**
+I focused heavily on "defensive coding" to ensure the user never feels lost. Instead of leaving the user with a blank screen or a broken layout:
+
+**Empty States:** If a search returns no results, the app provides a friendly, helpful message to guide the user back to discovery.
+
+**Custom 404 Experience:** I designed a "cute" 404 error page to maintain the app's personality even when a user lands on a broken link.
+
+**Loading States:** Used intentional UI feedback to keep the user informed while data is being fetched from the API.
+
 ## Key Tools Used
 **Vite:** For a blazing-fast development environment.
 
@@ -48,6 +58,7 @@ To display recipes of varying heights without awkward gaps, I implemented a Maso
 **React Router:** For seamless client-side navigation.
 
 **Custom Hooks:** To encapsulate logic for API calls and local storage management.
+[**Meals Api**](https://www.themealdb.com/api.php)
 
-[**Meals Api:**](https://www.themealdb.com/api.php)
+
 ![ScreenShot of application](./appSS.png)
