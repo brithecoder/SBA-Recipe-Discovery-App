@@ -42,11 +42,11 @@ To display recipes of varying heights without awkward gaps, I implemented a Maso
 
 ## 🎨 UX & Design Philosophy
 **Defensive Coding & User Feedback**
-I focused heavily on "defensive coding" to ensure the user never feels lost. Instead of leaving the user with a blank screen or a broken layout:
+I focused heavily on defensive coding to ensure the user never feels lost. Instead of leaving the user with a blank screen or a broken layout:
 
 **Empty States:** If a search returns no results, the app provides a friendly, helpful message to guide the user back to discovery.
 
-**Custom 404 Experience:** I designed a "cute" 404 error page to maintain the app's personality even when a user lands on a broken link.
+**Custom 404 Experience:** I designed a 404 error page to maintain the app's personality even when a user lands on a broken link.
 
 **Loading States:** Used intentional UI feedback to keep the user informed while data is being fetched from the API.
 
