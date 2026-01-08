@@ -7,7 +7,7 @@ export default function CategoryCard({ strCategory, strCategoryThumb, strCategor
  
   return (
     <div className="category-card">
-      <img src={strCategoryThumb} alt={strCategory} />
+      <img src={strCategoryThumb} alt={strCategory} loading="lazy" />
       <div className="category-content">
         <h3>{strCategory}</h3>
         {/* Letting the description define the height of the card */}
