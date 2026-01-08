@@ -1,7 +1,7 @@
 # 🍳 Recipe Discovery App (React + TypeScript)
 A modern, responsive web application for exploring culinary inspirations. This project was built to practice state management, custom hooks, and handling asynchronous data flows in a type-safe environment.I loved picking out a color theme for this project and also defensive coding to help develop the user experience. Like adding cute messages for the 404 error or if there were know results from a search query. 
 
-**Live Demo:** ![View Live Site](https://myflavorfinder.netlify.app/)
+[![Live Demo](https://img.shields.iobadgedemo-live_site-pink?style=for-the-badge&logo=netlify)](https://myflavorfinder.netlify.app/)
 ## 🚀 Getting Started
 To get a local copy up and running, follow these steps:
 
